@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+    width: 300px; /* Set the width of the card */
+    padding: 20px; /* Add some padding inside the div */
+    margin: 10px auto; /* Center the div horizontally */
+    border-radius: 10px; /* Round the corners of the card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a soft shadow */
+    border: 1px solid #ddd; /* Light border */
+    background-color: #fff; /* White background */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth hover effects */
+}
+
+.main:hover {
+    transform: translateY(-10px); /* Lift the card slightly on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhance the shadow on hover */
+}
+
+.main img {
+    width: 100%; /* Make the image take the full width of the card */
+    height: auto; /* Keep the image aspect ratio */
+    border-radius: 8px; /* Round the corners of the image */
+    margin-bottom: 15px; /* Add some space below the image */
+}
+
+.main p {
+    font-size: 16px; /* Set a base font size */
+    color: #333; /* Dark gray text color */
+    margin: 5px 0; /* Add some space between paragraphs */
+}
+
+.main p:first-child {
+    font-weight: bold; /* Make the first paragraph bold */
+    color: #007BFF; /* Accent color for the car make */
+}
+
+.main p:nth-child(2),
+.main p:nth-child(3) {
+    font-weight: bold; /* Highlight the model and color */
+}
+
+.main p:nth-child(6) {
+    color: #555; /* Subdued color for comments */
+    font-style: italic; /* Italicize comments */
+}
+
+    </style>
+</head>
+<body>
+    <div id="automobile" class="main">
+    <img src="./pics/photo-1570294646112-27ce4f174e38.jpeg" alt="Car Image">
+    <p>Make: Toyota</p>
+    <p>Model: Corolla</p>
+    <p>Color: White</p>
+    <p>Mileage: 10,000 miles</p>
+    <p>Rating: 4.5/5</p>
+    <p>Comments: Reliable and fuel-efficient.</p>
+    </div>
+    <button id="get">GetData</button>
+    <div id="acb">
+        
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="script.js"></script>
+</html>

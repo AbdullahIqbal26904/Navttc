@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Question For Multiplication</title>
+    
+</head>
+<body>
+    <!--form.form#form-->
+    <form action="" class="form" id="form">
+        <h4 class="h4" id="h4">Score: 0</h4>
+        <h1 class="question" id="question">
+            1 mul by 1
+        </h1>
+        <input type="text" class="input" id="input" placeholder="Enter your answer">
+        <button type="submit" class="btn">Submit</button>
+    </form>
+    <script>
+        const rand_num = Math.ceil(Math.random()*10);
+        const rand_num2 = Math.ceil(Math.random()*10);
+        const result = rand_num*rand_num2;
+        console.log(rand_num);
+        console.log(rand_num2);
+        console.log(result);
+        const questionElt = document.getElementById("question");
+        console.log(questionElt);
+        const dynamicContent = `<h1 class="question" id="question">
+            ${rand_num} mul by ${rand_num2}
+        </h1>`
+        questionElt.innerHTML = dynamicContent;
+
+        let score = parseInt(window.localStorage.getItem("score")) || 0;
+        document.getElementById("h4").innerText = "Score: " + score;
+
+        // Event listener for form submission
+        document.getElementById("form").addEventListener("submit", function(e){
+            const userInp = document.getElementById("input").value;
+            if (result == userInp) {
+                console.log('Correct answer');
+                score++;
+            } else {
+                console.log('Incorrect answer');
+                score--;
+            }
+            
+            // Store the updated score
+            window.localStorage.setItem("score", score);
+            // Update the score display
+            document.getElementById("h4").innerText = "Score: " + score;
+        });
+    </script>
+</body>
+</html>

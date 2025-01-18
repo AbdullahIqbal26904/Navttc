@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer CRUD Operations</title>
+</head>
+<body>
+    <h1>Customer CRUD Operations</h1>
+    
+    <form action="/create" method="POST">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="text" name="phone" placeholder="Phone" required>
+        <textarea name="address" placeholder="Address" required></textarea>
+        <button type="submit">Create Customer</button>
+    </form>
+
+    <h2>Customer List</h2>
+    <ul>
+        <% customers.forEach(customer => { %>
+            <li>
+                <form action="/update/<%= customer._id %>" method="POST">
+                    <input type="text" name="name" value="<%= customer.name %>">
+                    <input type="email" name="email" value="<%= customer.email %>">
+                    <input type="text" name="phone" value="<%= customer.phone %>">
+                    <textarea name="address"><%= customer.address %></textarea>
+                    <button type="submit">Update</button>
+                </form>
+                <form action="/delete/<%= customer._id %>" method="POST">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>

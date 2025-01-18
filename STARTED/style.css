@@ -1,0 +1,10 @@
+#recipes{
+    background-color: aquamarine;
+  }
+  
+  #recipes .recipe{
+    background: blue;
+  }
+  #recipes h2 {
+    text-align: center;
+  }

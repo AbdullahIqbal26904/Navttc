@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding-top: 50px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+        h1 {
+            font-size: 2rem;
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .task {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        .desc {
+            color: #6c757d;
+        }
+        .btn-custom {
+            margin-right: 5px;
+            margin-top: 10px;
+        }
+        .btn-complete {
+            background-color: #28a745;
+            color: white;
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+        }
+        .table td, .table th {
+            vertical-align: middle;
+        }
+        .table th {
+            background-color: #007bff;
+            color: white;
+        }
+        .completed {
+            background-color: #d4edda !important; /* Green background */
+            color: #155724; /* Dark green text */
+        }
+        .completed .tick {
+            font-size: 1.5rem;
+            color: #155724;
+            display: inline-block;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>To Do List Application</h1>
+        <form action="" id="form" class="form-inline mb-4">
+            <div class="form-group mx-sm-3 mb-2">
+                <input type="text" id="inp" class="form-control" placeholder="Task" required>
+            </div>
+            <div class="form-group mx-sm-3 mb-2">
+                <input type="text" id="description" class="form-control" placeholder="Description" required>
+            </div>
+            <button type="submit" id="btn" class="btn btn-primary mb-2">Submit</button>
+        </form>
+        <table id="myTable" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Tasks</th>
+                </tr>
+            </thead>
+            <tbody id="add">
+            </tbody>
+        </table>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="script2.js"></script>
+</body>
+</html>

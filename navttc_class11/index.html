@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple E-Commerce Store</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <header>
+        <h1  class="h1">E-Commerce Store</h1>
+        <h1 class="h1" id="h1"></h1>
+        <nav >
+            <ul class="nav">
+                <li><a href="">Home</a></li>
+                <li><a href="">Products</a></li>
+                <li><a href="">About</a></li>
+                <li><a href="contact.html" target="_blank">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main1">
+        <div class="div1">
+            <img src="pics/MBCAN-2023-EQE350-4M-SEDAN-AVP-DR.webp" alt="">
+            <h4 class="item1">Mercedes EQS 350</h4>
+            <p class="item1">$10.00</p>
+            <button id="btn1" class="btn" onclick="addCart('Oshan',10)">Add To Cart</button>
+        </div>
+        <div class="div1">
+            <img src="pics/city1.2.jpg" alt="">
+            <h4 class="item1">Honda City</h4>
+            <p class="item1">$20.00</p>
+            <button id="btn2" class="btn" onclick="addCart('City',20)">Add To Cart</button>
+        </div>
+        <div class="div1">
+            <img src="pics/large-51532-2023elantra.jpg" alt="">
+            <h4 class="item1">Hyundai Innova</h4>
+            <p class="item1">$30.00</p>
+            <button id="btn3" class="btn" onclick="addCart('mercedes',30)">Add To Cart</button>
+        </div>
+        <div class="div1">
+            <img src="pics/Average Weight Of A Car.webp" alt="">
+            <h4 class="item1">Mercedes AMG E63s</h4>
+            <p class="item1">$40.00</p>
+            <button id="btn4" class="btn" onclick="addCart('Oshan',40)">Add To Cart</button>
+        </div>
+    </main>
+    <div class="center">
+        <div class="boxes" id="boxes">
+            <h1 class="headings">Shopping Cart</h1>
+            <p id="cart"></p>
+            <p id="total" class="headings">Total: $0.00</p>
+            <button class="reset" id="reset" onclick="resetCart()">Empty Cart</button>
+          </div>
+    </div>
+    <footer class="footer">
+        <p>&copy; 2024 <I>My E-Commerce Store</I></p>
+      </footer>
+    <script>
+        // let score = parseInt(window.localStorage.getItem("score")) || 0;
+        // document.getElementById('btn1').addEventListener("click",function(e){
+        //     const total_amount = document.getElementById("total");
+        //     score += 10;
+        //     window.localStorage.setItem("score", score);
+        //     total_amount.innerText = "Total Amount: "+score;
+        // })
+        // document.getElementById('btn2').addEventListener("click",function(e){
+        //     const total_amount = document.getElementById("total");
+        //     score += 20;
+        //     window.localStorage.setItem("score", score);
+        //     total_amount.innerText = "Total Amount: "+score;
+        // })
+        // document.getElementById('btn3').addEventListener("click",function(e){
+        //     const total_amount = document.getElementById("total");
+        //     score += 30;
+        //     window.localStorage.setItem("score", score);
+        //     total_amount.innerText = "Total Amount: "+score;
+        // })
+        // document.getElementById('btn4').addEventListener("click",function(e){
+        //     const total_amount = document.getElementById("total");
+        //     score += 40;
+        //     window.localStorage.setItem("score", score);
+        //     total_amount.innerText = "Total Amount: "+score;
+        // })
+        let cart = [];
+        let total_price = 0;
+        function addCart(productName,price){
+            console.log(`Adding ${productName} to cart at price: ${price}`);
+            cart.push({productName,price});
+            total_price += price;
+            updateCartDisplay(total_price);
+            let naem = JSON.parse(localStorage.getItem('show'))
+            localStorage.setItem(`${naem}`+"cart",JSON.stringify(total_price))
+        console.log(naem)
+        }
+        function updateCartDisplay(total_price){
+            console.log("updating cart display.");
+            const cartItems = document.getElementById("cart");
+            const total = document.getElementById("total");
+            cartItems.innerHTML = ``;
+
+            cart.forEach(item => {
+                const li = document.createElement(`li`);
+                li.textContent = `Car: ${item.productName} - Price: ${item.price}`;
+                cartItems.appendChild(li);
+            })
+            total.innerHTML = `<p id="total" class="headings">Total: ${total_price.toString()}</p>`
+        }
+        function resetCart(){
+            cart = [];
+            total_price = 0;
+            const resetbtn = document.getElementById('boxes');
+            console.log(resetbtn);
+            resetbtn.innerHTML = `<h1 class="headings">Shopping Cart</h1>
+            <p id="cart"></p>
+            <p id="total" class="headings">Total: $0.00</p>
+            <button class="reset" id="reset" onclick="resetCart()">Empty Cart</button>`
+            console.log("reset.");
+        }
+        document.getElementById("h1").innerText = "Hello " +  ` ${JSON.parse(localStorage.getItem('show'))} `
+
+        let naem = JSON.parse(localStorage.getItem('show'))
+        document.getElementById("total").innerText = "Previous Total: " + `${JSON.parse(localStorage.getItem(`${naem}`+"cart"))}`
+    </script>
+</body>
+
+</html>

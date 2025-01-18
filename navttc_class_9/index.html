@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Currency Converter made by Abdullah Iqbal</h1>
+        <div>
+        <input type="number" id="amount"  placeholder="Enter amount">
+        <select name="" id="from_convert">
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="SAR">SAR</option>
+            <option value="PAK">PAK</option>
+            <option value="AFG">AFG</option>
+            <option value="GBP">GBP</option>
+            <option value="CAD">CAD</option>
+            <option value="AUD">AUD</option>
+        </select>
+        <select name="" id="to_convert">
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="SAR">SAR</option>
+            <option value="PAK">PAK</option>
+            <option value="AFG">AFG</option>
+            <option value="GBP">GBP</option>
+            <option value="CAD">CAD</option>
+            <option value="AUD">AUD</option>
+        </select>
+        <button id="btn">Convert</button>
+        <p id="result"></p>
+        </div>
+    </div>
+    <script>
+        const exchangeRate = {
+    USD: {EUR: 0.85, USD: 1, SAR: 0.75, PAK: 278.36, AFG: 70.92, GBP: 0.75, CAD: 1.25, AUD: 1.35},
+    EUR: {EUR: 1, USD: 1.18, SAR: 4.40, PAK: 303.55, AFG: 76.45, GBP: 0.88, CAD: 1.47, AUD: 1.59},
+    SAR: {EUR: 0.23, USD: 0.27, SAR: 1, PAK: 74.15, AFG: 18.95, GBP: 0.20, CAD: 0.33, AUD: 0.36},
+    PAK: {EUR: 0.0033, USD: 0.0036, SAR: 0.0135, PAK: 1, AFG: 0.25, GBP: 0.0024, CAD: 0.0043, AUD: 0.0048},
+    AFG: {EUR: 0.0131, USD: 0.0141, SAR: 0.0529, PAK: 3.93, AFG: 1, GBP: 0.0094, CAD: 0.0168, AUD: 0.0182},
+    GBP: {EUR: 1.14, USD: 1.33, SAR: 5.57, PAK: 345.66, AFG: 94.56, GBP: 1, CAD: 1.67, AUD: 1.81},
+    CAD: {EUR: 0.68, USD: 0.80, SAR: 3.33, PAK: 207.22, AFG: 56.52, GBP: 0.60, CAD: 1, AUD: 1.08},
+    AUD: {EUR: 0.63, USD: 0.74, SAR: 3.06, PAK: 191.65, AFG: 52.30, GBP: 0.55, CAD: 0.93, AUD: 1}
+};
+
+        const currency_from = document.getElementById("from_convert")
+        const currency_to = document.getElementById("to_convert")
+        document.getElementById('btn').addEventListener("click", result =>{
+            const amount = parseFloat(document.getElementById("amount").value)
+            if(isNaN(amount)){
+                document.getElementById("result").innerText =  `result: ${"invalid amount entered"}`
+            }
+            console.log(currency_from.value)
+            console.log(currency_to.value)
+            console.log(amount)
+            let final_amn = amount * exchangeRate[currency_from.value][currency_to.value]
+            console.log("final amount: "+final_amn)  
+            document.getElementById("result").innerText = `${amount +" "+ currency_from.value} is equavalent to: ${final_amn + " "+currency_to.value}`
+        })
+
+    </script>
+</body>
+</html>

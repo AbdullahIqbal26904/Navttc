@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop Watch</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background-color: beige;
+            color: black;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            background-color: rgb(136, 176, 75); 
+            width: 400px;   
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+        header {
+            background-color: hsl(257, 24%, 47%);
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            border-radius: 10px 10px 0 0;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            margin: 0;
+        }
+        .time-display {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            font-size: 50px;
+            margin: 20px 0;
+        }
+        .time-display p {
+            margin: 0 5px;
+        }
+        .buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        button {
+            margin: 10px;
+            border-radius: 50%;
+            font-size: 16px;
+            padding: 20px;
+            background-color: black;
+            color: white;
+            border: 1px solid black;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+
+        }
+        button:hover {
+            color: black;
+            background-color: white;
+            border: 2px solid black;
+            transform: scale(1.2);
+        }
+        #resume{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Stop Watch</h1>
+    </header>
+    <div class="container">
+        <div class="time-display" id="time-display">
+            <p id="minutes">00</p>:<p id="seconds">00</p>.<p id="milliseconds">00</p>
+        </div>
+        <div class="buttons">
+            <button class="start" id="start">Start</button>
+            <button class="stop" id="stop">Stop</button>
+            <button class="reset" id="reset">Reset</button>
+            <button class="resume" id="resume">Resume</button>
+        </div>
+    </div>
+    <script>
+        const startButton = document.getElementById('start');
+        const stopButton = document.getElementById('stop');
+        const resetButton = document.getElementById('reset');
+        const resumeButton = document.getElementById('resume');
+        const minutesDisplay = document.getElementById('minutes');
+        const secondsDisplay = document.getElementById('seconds');
+        const millisecondsDisplay = document.getElementById('milliseconds');
+        
+        let minutes = 0, seconds = 0, milliseconds = 0;
+        let interval = null;
+
+        function pad_start(){
+            let str = "hello"
+            console.log(str.padStart(6,"He")) 
+        }
+
+        function updateDisplay() {
+            minutesDisplay.textContent = minutes.toString().padStart(2, '0');
+            secondsDisplay.textContent = seconds.toString().padStart(2, '0');
+            millisecondsDisplay.textContent = milliseconds.toString().padStart(2, '0');
+        }
+
+        function startStopwatch() {
+            clearInterval(interval);
+            interval = setInterval(() => {
+                milliseconds++;
+                if (milliseconds === 100) {
+                    milliseconds = 0;
+                    seconds++;
+                    if (seconds === 60) {
+                        seconds = 0;
+                        minutes++;
+                    }
+                }
+                updateDisplay();
+            }, 10);
+        }
+
+        function stopStopwatch() {
+            clearInterval(interval);
+            resumeButton.style.display = 'inline-block'
+        }
+
+        function resetStopwatch() {
+            clearInterval(interval);
+            minutes = 0;
+            seconds = 0;
+            milliseconds = 0;
+            updateDisplay();
+            resumeButton.style.display = 'none'
+        }
+
+        function resumeStopwatch() {
+            if(minutes === 0 && seconds === 0 && milliseconds === 0)
+            {
+                console.log("press start button to start.")
+            }else{
+                startStopwatch()
+            }
+        }
+
+        startButton.addEventListener('click', startStopwatch);
+        stopButton.addEventListener('click', stopStopwatch);
+        resetButton.addEventListener('click', resetStopwatch);
+        resumeButton.addEventListener('click', resumeStopwatch);
+    </script>
+</body>
+</html>

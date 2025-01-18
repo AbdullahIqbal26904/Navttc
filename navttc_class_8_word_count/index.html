@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Count</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: blanchedalmond;
+        }
+        .div1{
+            height: 100px;
+            background-color: bisque;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        input {
+            width: 100%;
+            padding: 15px;
+            margin: 20px 0;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 18px;
+            outline: none;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+        input:focus{
+            background-color: white;
+        }
+        form{
+            display: flex;
+            
+            justify-content: center;
+        }
+        .div2{
+            margin: 20px auto;
+            max-width: 600px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        p{
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!--h2.h2>form>input#notepad-->
+    <!---.div1>h2-->
+    <div class="div1">
+    <h2>Run Time Word Count</h2>
+    </div>
+    <!--form>input#notepad-->
+    <div class="div2">
+    <form>
+        <input id="notepad" type="text" placeholder="Type Here" maxlength="10">
+    </form>
+    <!--.div2>p#total+p#remaining-->
+    <p id="total">Total Words: </p>
+    <p id="remaining"> Remaining Words: </p>
+    </div>
+    <script>
+        let total_count = 0;
+        let remaining_words = 0;
+        const max_range = 10;
+        let totalwords = document.getElementById('notepad').addEventListener("input",e =>{
+            total_count++;
+            remaining_words = max_range-total_count;
+            console.log(total_count)
+            console.log("remaining words",remaining_words)
+            if (total_count > max_range) {
+                totalCount = maxRange; 
+            }
+            const totElt = document.getElementById('total')
+            totElt.innerText = "Total words: "+total_count;
+
+            const remtElt = document.getElementById('remaining')
+            remtElt.innerText = "Remaining words: "+remaining_words
+
+            
+        })
+
+    </script>
+</body>
+</html>

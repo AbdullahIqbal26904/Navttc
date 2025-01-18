@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enhanced Navbar and Carousel</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    body{
+        margin: 0;
+        padding: 0;
+
+    }
+    .navbar-custom {
+      background-color: transparent !important;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+    }
+    .navbar-brand img {
+      height: 40px;
+    }
+    .navbar-nav .nav-link {
+        color: #f8f9fa; /* Slightly lighter color on hover */
+
+    }
+    .navbar-nav .nav-link:hover {
+        color: #f8f9fa; /* Slightly lighter color on hover */
+    }
+    .navbar-nav .dropdown-menu {
+      background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background for dropdown */
+    }
+    .navbar-nav .dropdown-item {
+      color: #fff; /* Light text color for dropdown items */
+    }
+    .navbar-nav .dropdown-item:hover {
+      background-color: rgba(0, 0, 0, 0.5); /* Background color on hover */
+    }
+    .btn-custom {
+      margin-left: 10px;
+    }
+    .carousel-item {
+      position: relative;
+      height: 100vh;
+      background: no-repeat center center;
+      background-size: cover;
+    }
+    .carousel-caption {
+      position: absolute;
+      bottom: 60px; /* Adjusted position */
+      right: 40px;  /* Adjusted position */
+      color: #fff;
+      text-align: right; /* Right-aligned text */
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for better readability */
+      padding: 10px;
+      border-radius: 5px; /* Rounded corners */
+      border-right: 20px  solid rgb(255, 178, 34);
+    }
+    .carousel-caption h1 {
+      font-size: 4rem;
+      font-weight: bold;
+    }
+    .carousel-caption p {
+      font-size: 2rem;
+    }
+    .main{
+      border-bottom: 15px solid rgb(255, 178, 34);
+
+    }
+    .packages {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 50px 0;
+        }
+    .package {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            width: 30%;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .package:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .package-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #3498db;
+        }
+
+        .package-details {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        .package-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: #8e44ad;
+        }
+
+        .footer {
+            background-color: #2c3e50;
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer a {
+            color: #ffdb4d;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: #ffffff;
+        }
+
+        .footer-text {
+            margin: 0;
+        }
+  </style>
+</head>
+<body>
+<div class=" main w-100">
+<nav class="navbar navbar-expand-lg navbar-light navbar-custom w-100">
+  <a class="navbar-brand" href="#">
+    <img src="pics/logo.jpeg" alt="Logo">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Why US</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Option 1</a>
+          <a class="dropdown-item" href="#">Option 2</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="membershipDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Membership</a>
+        <div class="dropdown-menu" aria-labelledby="membershipDropdown">
+          <a class="dropdown-item" href="#">Option 1</a>
+          <a class="dropdown-item" href="#">Option 2</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="branchesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Our Branches</a>
+        <div class="dropdown-menu" aria-labelledby="branchesDropdown">
+          <a class="dropdown-item" href="#">Option 1</a>
+          <a class="dropdown-item" href="#">Option 2</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Promotions</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Blog</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contact</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn btn-primary btn-custom" href="#">Join Now</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"><i class="fa fa-search"></i></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div id="carouselExampleCaptions" class="carousel slide w-100">
+    <div class="carousel-inner w-100">
+      <div id="bg1" class="carousel-item active" style="background-image: url('pics/photo-1517836357463-d25dfeac3438.avif');">
+        <div class="carousel-caption">
+          <h1>Welcome to Our Service</h1>
+          <p>Discover amazing things with us.</p>
+          <button id="male" type="button" class="btn btn-warning">Switch to female</button>
+
+        </div>
+      </div>
+      <div class="carousel-item" style="background-image: url('pics/photo-1534438327276-14e5300c3a48.avif');">
+        <div class="carousel-caption">
+          <h1>Our Latest Promotions</h1>
+          <p>Check out our latest offers and discounts.</p>
+          <button type="button" class="btn btn-warning">Latest Promotions</button>
+
+        </div>
+      </div>
+      <div class="carousel-item" style="background-image: url('pics/pic3.avif');">
+        <div class="carousel-caption">
+          <h1>Join Us Today</h1>
+          <p>Become a member and enjoy exclusive benefits.</p>
+          <button type="button" class="btn btn-warning">Join US</button>
+
+        </div>
+      </div>
+      <div class="carousel-item" style="background-image: url('pics/pic4.avif');">
+        <div class="carousel-caption">
+          <h1>Visit Our Branches</h1>
+          <p>Find a branch near you and visit us.</p>
+          <button type="button" class="btn btn-warning">Branches</button>
+
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+  
+</div>
+<div class="packages">
+  <!-- Basic Package -->
+  <div class="package">
+      <div class="package-title">Basic</div>
+      <div class="package-details">
+          <p>Includes essential features</p>
+          <p>5 GB Storage</p>
+          <p>Email Support</p>
+      </div>
+      <div class="package-price">$9.99/month</div>
+  </div>
+
+  <!-- Standard Package -->
+  <div class="package">
+      <div class="package-title">Standard</div>
+      <div class="package-details">
+          <p>Includes all Basic features plus:</p>
+          <p>50 GB Storage</p>
+          <p>Priority Support</p>
+      </div>
+      <div class="package-price">$19.99/month</div>
+  </div>
+
+  <!-- Premium Package -->
+  <div class=" package">
+      <div class="package-title">Premium</div>
+      <div class="package-details">
+          <p>Includes all Standard features plus:</p>
+          <p>Unlimited Storage</p>
+          <p>24/7 Support</p>
+      </div>
+      <div class="package-price">$29.99/month</div>
+  </div>
+</div>
+<footer class="footer">
+  <p class="footer-text">&copy; 2024 Fitness Club. All rights reserved.</p>
+  <p class="footer-text">
+      <a href="#">Privacy Policy</a> |
+      <a href="#">Terms of Service</a>
+  </p>
+</footer>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

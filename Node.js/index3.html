@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin: 10px 0 5px;
+        }
+        input, select, button {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Student Management</h2>
+        <form id="studentForm">
+            <label for="id">Student ID (for Update/Delete):</label>
+            <input type="number" id="id" name="id" placeholder="Enter Student ID">
+            
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter Student Name" required>
+
+            <label for="cnic">CNIC:</label>
+            <input type="text" id="cnic" name="cnic" placeholder="Enter CNIC">
+
+            <label for="course">Course:</label>
+            <input type="text" id="course" name="course" placeholder="Enter Course">
+
+            <label for="grade">Grade:</label>
+            <select id="grade" name="grade">
+                <option value="">Select Grade</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                <option value="F">F</option>
+            </select>
+
+            <label for="gpa">GPA:</label>
+            <input type="number" step="0.01" id="gpa" name="gpa" placeholder="Enter GPA">
+
+            <button type="button" id="add">Add Student</button>
+            <button type="button" id="update">Update Student</button>
+            <button type="button" id="delete">Delete Student</button>
+        </form>
+    </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+    <script src="script3.js"></script>
+</body>
+</html>

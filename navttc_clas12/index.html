@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dictionary</title>
+    <style>
+        body{
+            margin: 0;
+            display: flex;
+            min-height: 100vh;
+            justify-content: center;
+            background-color: blue;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .container{
+            background-color: rgba(255, 255, 255, 0.3);
+            padding: 28px;
+            border-radius: 7px;
+            box-shadow: 0 10px, 10px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            margin: 10px;
+            max-width: 450px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        .heading{
+            font-size: 23px;
+        }
+        .input{
+            height: 53px;
+            width: 300px;
+            background-color: rgba(255, 255, 255, 0.6);
+            border-color: rgba(255, 255, 255, 0.4);
+            font-size: 15px;
+            padding: 0 42px;
+            border-radius: 5px;
+        }
+        .meaning-container{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h1 class="heading"></h1>
+        <!-- input.inpu#input[placeholder="Search a word"] -->
+        <input type="text" class="input" id="input" placeholder="search a word">
+        <p class="info-text" id="info-text"></p>
+        <div class="meaning-container" id="meaning-container">
+            <p id="title">Word Title: <span></span></p>
+            <!-- p{Word Meaning: }>span.meaning#meaning -->
+            <p>Word Meaning: <span class="meaning" id="meaning"></span></p>
+            <!-- audio#audio[src="" controls] -->
+            <audio src="" id="audio" controls></audio>
+        </div>
+    </div>
+</body>
+<script>
+    const inputElt = document.getElementById("input")
+    const infoTexElt = document.getElementById("info-text")
+    const meaningContainer = document.getElementById("meaning-container")
+    const meaningElt = document.getElementById("meaning")
+    const audioElt = document.getElementById("audio")
+    const titleElt = document.getElementById("title")
+    
+    inputElt.addEventListener("keyup",(e) =>{
+        if(e.target.value && e.key === "Enter"){
+            fetchAPI(e.target.value)
+        }
+    })
+    async function fetchAPI(word){
+        try{
+            infoTexElt.style.display = "block"
+            meaningContainer.style.display = "none"
+            infoTexElt.innerText = `Searching the meaning of${word}`
+            const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
+            const result = await fetch(url).then((res)=> res.json())
+            console.log(result)
+            infoTexElt.style.display = "none"
+            meaningContainer.style.display = "block"
+            titleElt.innerText = "Title: "+result[0].word
+            meaningElt.innerText = result[0].meanings[0].definitions[0].definition
+            audioElt.src = result[0].phonetics[0].audio
+        }catch(error){
+            console.log("error: "+err)
+        }
+    }
+</script>
+</html>

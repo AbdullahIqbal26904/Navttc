@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;  /* Horizontally center the container */
+            align-items: center;      /* Vertically center the container */
+            flex-direction: column;
+        }
+        h1{
+            color: black;
+        }
+        .container {
+            width: 600px; 
+            height: 400px; 
+            overflow: hidden;
+            border: 3px solid #ddd; /* Light border */
+            box-shadow: 0 100px 200px rgba(0, 0, 0, 0.1); /* Soft shadow */
+            border-radius: 10px; /* Rounded corners */
+            position: relative; /* Added to position the button inside */
+        }
+        .image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Cover the container while maintaining aspect ratio */
+            top: 0;
+            left: 0;
+            border-radius: 10px; /* Match container's rounded corners */
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Selector Using setTimeoUT</h1>
+
+    <div class="container" id="container2">
+        <img src="pics/image-0.jpg" alt="" class="image" id="image">
+    </div>
+    
+    <script>
+        let count = 0
+        const imgElt = document.getElementById('image');
+        function chage_pic(){
+            console.log("hello")
+            if (count == 7) {
+                count = 1;
+            }
+            imgElt.src = `pics/image-${count.toString()}.jpg`;
+            document.body.style.backgroundImage = `url('pics/image-${(count).toString()}.jpg')`;
+            document.body.style.backgroundSize = "cover"; // Optional: makes the image cover the entire background
+            document.body.style.backgroundRepeat = "no-repeat"; 
+            document.body.style.backgroundImage.filter = "blur(5px)"
+            console.log(count);
+            count++;
+            setTimeout(chage_pic,1000)
+        }
+        chage_pic()
+        
+    </script>
+</body>
+</html>

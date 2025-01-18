@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        body{
+            margin: 0px;
+            padding: 0px;
+            background-color: brown;
+        }
+        h2{
+            background-color: rgb(255, 99, 71);
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            height: 50px;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        .clockContainer{
+            left: 100px;
+            height: 200px;
+            width: 900px;
+            background-color: rgb(255, 99, 71);
+            margin: 100px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid black;
+            flex-wrap: wrap;
+        }
+        /* .clockContainer{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        } */
+        .text{
+            font-weight: bold;
+            font-size: 30px;
+            display: block;
+            align-items: center;
+            justify-content: center;
+        }
+        .div1{
+            padding: 20px;
+            margin: 10px;
+            border: 2px solid black;
+            
+        }
+    </style>
+</head>
+<body>
+    <h2>Digital Time Keeper</h2>
+    <div class="clockContainer">
+        <div class="div1">
+            <!--span#hour-->
+            <span class="text" id="hour">00</span>
+            <!--span.text-->
+            <span class="text">Hours</span>
+        </div>
+        <h2>:</h2>
+        <div class="div1">
+            <!--span#minutes-->
+            <span class="text" id="minutes">00</span>
+            <!--span.text-->
+            <span class="text">Minutes</span>
+        </div>
+        <h2>:</h2>
+        <div class="div1">
+            <!--span#seconds-->
+            <span class="text" id="seconds">00</span>
+            <!--span.text-->
+            <span class="text">Seconds</span>
+        </div>
+        <div class="div1">
+            <span class="text" id="am_pm"></span>
+        </div>
+    </div>
+    <script>
+        const hoursElt = document.getElementById('hour');
+        const minutesElt = document.getElementById('minutes');
+        const secElt = document.getElementById('seconds');
+        const am_pmElt = document.getElementById('am_pm');
+
+        function updateClock(){
+            console.log("update Clock");
+            let h = new Date().getHours();
+            let m = new Date().getMinutes();
+            let s = new Date().getSeconds();
+            
+            if(h>12){
+                h= h-12;
+                am_pmElt.innerText = "PM";
+            }else{
+                am_pmElt.innerText = "AM";
+            }
+            if(h<10){
+                h = "0"+h;
+            }else{
+                h=h;
+            }
+            m = m<10 ? "0"+m :m;
+            s = s<10 ? "0"+s :s;
+            hoursElt.innerText = h;
+            minutesElt.innerText = m;
+            secElt.innerText = s;
+            setTimeout(updateClock,1000);
+        }
+
+        // const myInterval = setInterval(myTimer, 1000);
+        // let count = 0;
+        //only calls 1 time setTimeout.
+        // window.setTimeout(()=>{
+        //     console.log("setTime out");
+        // },1000);
+        //calls function after every one second.
+
+        // function myTimer() {
+        //     count++;
+        //     console.log(count);
+        //     if(count == 10){
+        //         myStopFunction();
+        //     }
+        // }
+
+        // function myStopFunction() {
+        //     clearInterval(myInterval);
+        // }
+        // 1st Option
+        // var t = window.setInterval(()=>{
+        //     updateClock();
+        // },1000);
+        // var t = window.setInterval(updateClock,1000);
+        updateClock()
+        // window.setTimeout(() =>{
+        //     window.clearInterval(t)
+        // },10000)
+        //work can be done with setTimeout that we have done with setTimeOut using recursive functions
+    </script>
+</body>
+</html>

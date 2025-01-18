@@ -1,0 +1,7 @@
+.rows{
+    width: 40%;
+    background-color: antiquewhite;
+}
+.cell{
+    border: 1px solid black;    
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter App</title>
+    <style>
+        body{
+            position: absolute;
+        }
+        .main_div{
+            height: 300px;
+            border: 1px solid black;
+            width: 350px;
+            position: relative;
+            margin: 40%;
+            left: 50%;
+            text-align: center;
+        }
+        .div1{
+            background-color: whitesmoke;
+            border-bottom:1px solid black ;
+        }
+        .main_div .div2{
+            font-size: 30px;
+        }
+        .main_div .btn{
+            margin-top: 30px;
+        }
+        .main_div button {
+        padding: 8px 16px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 4px;
+    }
+    </style>
+</head>
+<body>
+    <div class="main_div" id="main_div">
+        <div class="div1"><h1>Counter App</h1></div>
+        <p>this is a simple counter application. Use Buttons to increase decrease or reset the counter value.</p>
+        <div class="div2" id="div2">Score: 0</div>
+        <div class="btn" id="btn">
+            <button id="btn1">Increase</button>
+            <button id="btn2">Decrease</button>
+            <button id="btn3">Reset</button>
+        </div>
+    </div>
+    <script>
+        let score = parseInt(window.localStorage.getItem("score")) || 0;
+        document.getElementById("btn1").addEventListener("click",function(e){
+            console.log("button 2 clicked");
+            score++;
+            window.localStorage.setItem("score", score);
+            document.getElementById("div2").innerText = "Score: "+score;
+        })
+        document.getElementById("btn2").addEventListener("click",function(e){
+            console.log("button 2 clicked");
+            score--;
+            window.localStorage.setItem("score", score);
+            document.getElementById("div2").innerText = "Score: "+score;
+        })
+        document.getElementById("btn3").addEventListener("click",function(e){
+            console.log("button 2 clicked");
+            score = 0;
+            window.localStorage.setItem("score", 0);
+            document.getElementById("div2").innerText = "Score: "+score;
+        })
+    </script>
+</body>
+</html>

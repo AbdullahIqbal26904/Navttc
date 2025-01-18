@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salary Tax Calculator</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: beige;
+            width: 100%;
+            padding: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: brown;
+            margin: 0;
+        }
+        hr {
+            border: 1px solid black;
+            width: 80%;
+            margin: 10px 0;
+        }
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 600px;
+            height: 225px;
+            text-align: center;
+            margin: 100px;
+        }
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: brown;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            margin: 20px;
+        }
+        button:hover {
+            background-color: #a52a2a;
+            transform: scale(1.05);
+        }
+        p{
+            font-size: 20px;
+            color: #a52a2a ; 
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Salary Tax Calculator</h1>
+        <hr>
+    </header>
+    <div class="container">
+        <input  type="text" class="inp" id="inp" placeholder="Enter your salary">
+        <button id="submit">Calculate</button>
+        <p id="count">Tax Payable: </p>
+    </div>
+</body>
+<script>
+    const submit = document.getElementById("submit")
+    const input = document.getElementById("inp")
+    const output = document.getElementById("count")
+    const salaryTaxMap = {
+    '0-600000': 0,
+    '600001-1200000': 5,
+    '1200001-1800000': 10,
+    '1800001-2400000': 15,
+    '2400001-Infinity': 20 
+    };
+    function calculate_tax(){
+        const salary = input.value
+        console.log(salary)
+        for(const i in salaryTaxMap){
+            // console.log(i + ": "+salaryTaxMap[i]+"%")
+            let arr = i.split('-')
+            if(arr[1] === "Infinity"){
+                console.log(salaryTaxMap[i])
+                output.innerText = "Tax Payable: " + ((salaryTaxMap[i])/100*parseInt(input.value))
+                return
+            }
+            if(parseInt(input.value) >= parseInt(arr[0]) &&  parseInt(input.value) <= parseInt(arr[1])){
+                console.log(salaryTaxMap[i])
+                output.innerText = "Tax Payable: " + ((salaryTaxMap[i])/100*parseInt(input.value))
+                // console.log(i + ": "+salaryTaxMap[i]+"%")
+                // console.log(arr) 
+            }
+        } 
+    }
+    submit.addEventListener("click",calculate_tax)
+
+</script>
+</html>

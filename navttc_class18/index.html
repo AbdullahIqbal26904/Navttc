@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <style>
+        .hide{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="contentDiv">
+            this is some <strong>HTML</strong> content that we will save
+        </div>
+        <button id="savedContent">save</button>
+        <button id="displayContent">display</button>
+        <button id="setContent">Set</button>
+
+        <div class="output" id="displayArea"></div>
+    </div>
+    <div class="container">
+        <div id="product">
+            <h3 id="h3"></h3>
+            <ul class="hide" id="ul">
+                <li id="li1"></li>
+                <li id="li2"></li>
+                <li id="li3"></li>
+            </ul>
+        </div>
+        <button id="btn1">product1</button>
+        <button id="btn2">product2</button>
+        <button id="btn3">display saved content</button>
+        <button id="btn4">set new content</button>
+        <button id="btn5">add description</button>
+    </div>
+    <div class="container">
+        <p>This is <span id="span">Apple watch</span></p>
+        <button id="btnn1">change content 1</button>
+        <button id="btnn2">change content 2</button>
+    </div>
+</body>
+<script src="script.js"></script>
+</html>
